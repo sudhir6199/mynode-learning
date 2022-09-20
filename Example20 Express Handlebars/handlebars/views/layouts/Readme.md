@@ -1,0 +1,2 @@
+The layouts is the HTML page wrapper which can be reused for the different views of the app so here main.handlebars file contains the page html template.<br />
+The {{{ body }}} placeholder in main.handlebars file is where the homepage.handlers file content should be rendered.

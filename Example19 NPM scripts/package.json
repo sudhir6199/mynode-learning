@@ -1,0 +1,26 @@
+{
+  "name": "local-package-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "pretest": "node pre-test.js",
+    "test": "jest",
+    "posttest": "node post-test.js",
+    "check": "eslint index.js"
+  },
+  "author": "Sudhir",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.0.1",
+    "sudhir_custom_global": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.23.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.5",
+    "eslint-plugin-promise": "^6.0.1"
+  }
+}

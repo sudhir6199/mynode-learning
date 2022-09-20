@@ -69,7 +69,7 @@ function child2(callback=()=>{
        return callback()+arg2
 }
 
-console.log("Case2: callback function - parent function out:",child2());
+console.log("Case2: callback function out:",child2());
 
 //child2(1);    This will replace the argument callback() function with integer 1 & we are calling callback() while summing in return statement.
 //child2(1,2);  This will replace the argument callback() function with integer 1 & we are calling callback() while summing in return statement.
@@ -87,4 +87,40 @@ callback_output=child3(()=>{        // This function code will go as it is as co
      return a+b;
   },2);
 
-console.log("\nCase3: callback function - parent function out:",callback_output +"\n");
+console.log("\nCase3: callback function out:",callback_output +"\n");
+
+
+
+//Case4: Create Callback function in a variable passed as the argument section of calling statement.
+function child4(callback,arg2=3) {
+     return callback()+arg2; //here we are giving () to callback like callback() because the caller just passed function code as argument not actually sending the return value by executing while calling.
+}
+
+//create callback function
+var callback=()=>{
+          let a=1;
+          let b=1;
+          return a+b;
+}
+
+callback_output=child4(callback,2);  // This callback var has callback function code that will go as it is as code but not the return value of the callback fuction, so in the child4 function we need to execute this code by speciying callback().
+
+
+console.log("\nCase4: callback function out:",callback_output +"\n");
+
+
+//Case6
+
+function calculateSquare(number, callback) {  
+     setTimeout(() => {
+       const result = number * number;    
+       callback(result); //Since the callback function code shared as an argument by the caller, mentioning callback(result) will actually dosent call but execute right there because the function code allready sent by the caller as an argument.
+     }, 1000);
+ }
+ 
+ 
+
+calculateSquare(2, (result) => { //The argument "result" value is not requried to be declared here in this line, because this callback function code will be passed as an argument as it is to calculateSquare function.
+     console.log('Result from calculateSquare: ' + result);
+    }
+);

@@ -1,0 +1,3 @@
+1. child_process module can be used to spawn child processes as O.S I/O calls that runs in parllel to main process.</br>
+2. disadvantage with this module is it creates processs not threads, a process can create multiple threads so this is not preffered for cpu intensive apps or app that require multiple instances.</br>
+3. process cannot listen to main process port so this module is recommended to create workers not for web servers.

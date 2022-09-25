@@ -1,16 +1,19 @@
+
+//3 Functions: getUser/getRepositories/getCommits
 function getUser(id) {
-    return new Promise((resolve, reject) => {
-                                               setTimeout(() => {
-                                                                  console.log("Reading from a database....");
-                                                                  resolve({ id: id, githubUsername: "jerrycode06" }); //(user) => getRepositories(user.githubUsername)
-                                                                },
-                                                           2000
-                                                          );
-                                            }
+    return new Promise((resolve, reject) => 
+        {
+          setTimeout(() => {
+             console.log("Reading from a database....");
+             resolve({ id: id, githubUsername: "jerrycode06" }); //(user) => getRepositories(user.githubUsername)
+            },
+            2000
+          );
+        }
     );
   }
   
-  function getRepositories(username) {
+function getRepositories(username) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         console.log(`Extracting Repositories for ${username}....`);
@@ -20,7 +23,7 @@ function getUser(id) {
     });
   }
   
-  function getCommits(repo) {
+function getCommits(repo) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         console.log("Extracting Commits for " + repo + "....");
@@ -30,7 +33,7 @@ function getUser(id) {
   }
 
 
-// Callback Hell
+//Example1: Callback Hell
 getUser(1, (user) => {
                         console.log("User", user);
                         getRepositories(user.githubUsername, (repos) => {
@@ -45,7 +48,8 @@ getUser(1, (user) => {
                     }
 )
 
-// Replace Callback with Promises to avoid callback hell
+//Example2:  Callback function using the Promises then option to avoid callback hell
+//Remember: .then can send value to promise used as subfunction or return function and also catch's the return of runService, this is .then purpose everywhere.
 getUser(1)
 .then((user) => getRepositories(user.githubUsername)) //getRepositories("jerrycode06")
 .then((repos) => getCommits(repos[0]))                //getCommits("repo1")
@@ -54,7 +58,7 @@ getUser(1)
 
 
 
-//Better Replace Callback with async instead Promises to avoid callback hell.
+//Example3: To avoid call back hell Better Replace the function with async function.
 async function displayCommits() {
     try {
       const user = await getUser(1);
@@ -66,4 +70,4 @@ async function displayCommits() {
     }
   }
   
-  displayCommits();
+displayCommits();
